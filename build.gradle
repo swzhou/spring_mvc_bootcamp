@@ -1,0 +1,17 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'jetty'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework:spring-webmvc:3.+',
+            'org.springframework:spring-web:3.+',
+            'javax.servlet:servlet-api:2.5'
+
+    testCompile 'junit:junit:4.+'
+                'org.mockito:mockito-all:1.9.0'
+}
