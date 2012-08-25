@@ -2,6 +2,7 @@ db1.h2.db
 db1.trace.db
 EmailFolder/*
 .idea
+.clover
 *.class
 target/
 out/

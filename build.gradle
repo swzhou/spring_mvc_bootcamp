@@ -10,12 +10,22 @@ repositories {
 dependencies {
     compile 'org.springframework:spring-webmvc:3.+',
             'org.springframework:spring-web:3.+',
-            'javax.servlet:servlet-api:2.5'
+            'javax.servlet:servlet-api:2.5',
+            'org.freemarker:freemarker:2.3.19',
+            'org.springframework:spring-orm:3.+',
+            'org.hibernate:hibernate-core:4.+',
+            'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.+',
+            'mysql:mysql-connector-java:5.+',
+            'org.hibernate:hibernate-annotations:3.5.+'
 
-    testCompile 'junit:junit:4.+'
-                'org.mockito:mockito-all:1.9.0'
+    testCompile 'junit:junit:4.+',
+                'org.mockito:mockito-all:1.9.0',
+                'org.springframework:spring-test:3.+',
+                'org.testng:testng:6.+',
+                'org.seleniumhq.selenium:selenium-java:2.23.+',
+                'org.seleniumhq.selenium:selenium-firefox-driver:2.23.+'
 }
 
 jettyRun {
-    contextPath = 'bootcamp'
+    contextPath = 'todo'
 }
