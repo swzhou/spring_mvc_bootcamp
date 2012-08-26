@@ -14,9 +14,16 @@ dependencies {
             'org.freemarker:freemarker:2.3.19',
             'org.springframework:spring-orm:3.+',
             'org.hibernate:hibernate-core:4.+',
+            'commons-dbcp:commons-dbcp:1.+',
             'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.+',
             'mysql:mysql-connector-java:5.+',
-            'org.hibernate:hibernate-annotations:3.5.+'
+            'org.hibernate:hibernate-annotations:3.5.+',
+            'org.hibernate:hibernate-validator:4.+'
+
+    runtime 'org.slf4j:slf4j-api:1.6.+',
+            'org.slf4j:slf4j-log4j12:1.6.+',
+            'log4j:log4j:1.2.+',
+            'cglib:cglib:2.2.+'
 
     testCompile 'junit:junit:4.+',
                 'org.mockito:mockito-all:1.9.0',
