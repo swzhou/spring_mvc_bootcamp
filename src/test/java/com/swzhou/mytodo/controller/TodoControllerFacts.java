@@ -1,5 +1,6 @@
-package com.swzhou.mytodo.unit.controller;
+package com.swzhou.mytodo.controller;
 
+import com.swzhou.mytodo.controller.TodoController;
 import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.service.TodoService;
 import org.junit.Test;

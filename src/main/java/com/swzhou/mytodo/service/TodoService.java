@@ -11,11 +11,19 @@ import java.util.List;
 @Service
 public class TodoService {
 
+    private TodoRepository repository;
+
+    public TodoService() {
+
+    }
+
     @Autowired
-    private TodoRepository todoRepository;
+    public TodoService(TodoRepository repository) {
+        this.repository = repository;
+    }
 
     @Transactional
     public List<Todo> getAll() {
-        return todoRepository.getAll();
+        return repository.getAll();
     }
 }

@@ -10,8 +10,12 @@ import java.util.List;
 @Repository
 public class TodoRepository {
 
-    @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public TodoRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public List<Todo> getAll() {
         return sessionFactory.getCurrentSession()

@@ -22,7 +22,9 @@ dependencies {
             'org.springframework.security:spring-security-core:3.+',
             'org.springframework.security:spring-security-web:3.+',
             'org.springframework.security:spring-security-config:3.+',
-            'org.springframework.security:spring-security-cas:3.+'
+            'org.springframework.security:spring-security-cas:3.+',
+            fileTree(dir: 'lib', include: '*.jar'),
+            'org.codehaus.groovy:groovy-all:2.+'
 
     runtime 'org.slf4j:slf4j-api:1.6.+',
             'org.slf4j:slf4j-log4j12:1.6.+',
@@ -34,9 +36,21 @@ dependencies {
                 'org.springframework:spring-test:3.+',
                 'org.testng:testng:6.+',
                 'org.seleniumhq.selenium:selenium-java:2.23.+',
-                'org.seleniumhq.selenium:selenium-firefox-driver:2.23.+'
+                'org.seleniumhq.selenium:selenium-firefox-driver:2.23.+',
+                'com.h2database:h2:1.3.+',
+                'hsqldb:hsqldb:1.8.+'
 }
 
+jettyRun.doFirst {
+    def webXmlTemplate = file("$webAppDir/WEB-INF/web.xml")
+    def generatedWebXmlFile = file("$buildDir/web.xml")
+    def engine = new groovy.text.SimpleTemplateEngine()
+    def hostName = InetAddress.getLocalHost().getHostName()
+    generatedWebXmlFile.withWriter { w ->
+        w << engine.createTemplate(webXmlTemplate).make([servername: hostName]).toString()
+    }
+}
 jettyRun {
     contextPath = 'todo'
+    webXml= file("$buildDir/web.xml")
 }

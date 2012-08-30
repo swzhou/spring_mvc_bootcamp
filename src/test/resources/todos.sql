@@ -1,0 +1,1 @@
+insert into todos (id, content) values (1, 'todo1');
