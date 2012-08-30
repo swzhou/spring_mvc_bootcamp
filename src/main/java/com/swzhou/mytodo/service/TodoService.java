@@ -14,7 +14,6 @@ public class TodoService {
     private TodoRepository repository;
 
     public TodoService() {
-
     }
 
     @Autowired
