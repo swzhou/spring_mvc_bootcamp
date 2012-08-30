@@ -4,6 +4,7 @@ import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.persistence.TodoRepository;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -32,5 +33,22 @@ public class TodoServiceFacts {
     private TodoService givenTodoService(Todo... todo) {
         TodoRepository todoRepository = new InMemoryTodoRepository(todo);
         return new TodoService(todoRepository);
+    }
+
+    private class InMemoryTodoRepository extends TodoRepository {
+
+        private List<Todo> todos = new ArrayList<Todo>();
+
+        public InMemoryTodoRepository(Todo... todos) {
+            super(null);
+            for(Todo todo: todos) {
+                this.todos.add(todo);
+            }
+        }
+
+        @Override
+        public List<Todo> getAll() {
+            return this.todos;
+        }
     }
 }
