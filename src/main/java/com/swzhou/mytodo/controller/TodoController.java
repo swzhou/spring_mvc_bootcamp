@@ -1,5 +1,6 @@
 package com.swzhou.mytodo.controller;
 
+import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,4 +26,10 @@ public class TodoController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "new", method = RequestMethod.GET)
+    public ModelAndView create() {
+        ModelAndView modelAndView = new ModelAndView("todo/new");
+        modelAndView.addObject("todo", new Todo());
+        return modelAndView;
+    }
 }

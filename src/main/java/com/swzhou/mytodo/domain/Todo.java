@@ -14,7 +14,8 @@ public class Todo {
     @Column(name="content")
     private String content;
 
-    private Todo() {
+    public Todo() {
+        this.content = "";
     }
 
     public Todo(String content) {

@@ -1,0 +1,15 @@
+<#import "../layout/default.html" as layout>
+<@layout.defaultLayout>
+    <div data-role="header">
+        <h1>Add Todo</h1>
+    </div>
+    <form name="todo" action="/create" method="post">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="content">Content:</label>
+            <textarea type="text" name="content" id="content" value="" placeholder="Content"></textarea>
+        </div>
+        <button type="submit" data-theme="b" name="submit" value="submit-value" class="ui-btn-hidden"
+                aria-disabled="false">Submit
+        </button>
+    </form>
+</@layout.defaultLayout>

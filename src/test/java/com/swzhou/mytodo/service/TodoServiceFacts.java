@@ -2,6 +2,7 @@ package com.swzhou.mytodo.service;
 
 import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.persistence.TodoRepository;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.

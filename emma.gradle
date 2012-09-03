@@ -83,5 +83,16 @@ test {
         println "txt: $buildDir/reports/emma/coverage.txt"
         println "Test $buildDir/reports/emma/coverage.html"
         println "Test $buildDir/reports/emma/coverage.xml"
+
+
+    }
+}
+
+task checkReport << {
+    def reportFile = file("$buildDir/reports/emma/coverage.xml")
+    def report = new XmlParser().parse(reportFile)
+    def coverage = report.data[0].all[0].coverage[3].@value
+    if(coverage !=~ /^9\d%/) {
+        throw new RuntimeException('coverage lower than 90%')
     }
 }

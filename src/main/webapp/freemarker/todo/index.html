@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
-</head>
-<body>
-<div data-role="page">
-    <div data-role="header">
-        <h1>My Todo</h1>
-    </div>
-    <div data-role="content">
-        <ul data-role="listview" data-inset="true" data-filter="true">
-            <#list todos as todo>
-                <li><a href="#">${todo.getContent()}</a></li>
-            </#list>
-        </ul>
-    </div>
-    <a href="https://castest.thoughtworks.com/cas/logout" data-role="button" data-icon="star">Logout</a>
+<#import "../layout/default.html" as layout>
+<@layout.defaultLayout>
+<div data-role="header">
+    <h1>My Todo</h1>
 </div>
-</body>
-</html>
+<div data-role="content">
+    <ul data-role="listview" data-inset="true" data-filter="true">
+        <#list todos as todo>
+            <li><a href="#">${todo.getContent()}</a></li>
+        </#list>
+    </ul>
+</div>
+<div data-role="controlgroup">
+    <a href="new" data-role="button" data-type="horizontal" data-icon="plus">Add</a>
+</div>
+</@layout.defaultLayout>

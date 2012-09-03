@@ -3,6 +3,7 @@ package com.swzhou.mytodo.controller;
 import com.swzhou.mytodo.controller.TodoController;
 import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.service.TodoService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.isNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +39,25 @@ public class TodoControllerFacts {
         List<Todo> todos = (List<Todo>) modelAndView.getModel().get("todos");
         assertThat(todos.size(), is(1));
         assertThat(todos.get(0), equalTo(expectTodo));
+    }
+
+    @Test
+    public void should_use_todo_new_view_to_show_new_todo_page() {
+        TodoController todoController = givenTodoController();
+
+        ModelAndView modelAndView = todoController.create();
+
+        assertThat(modelAndView.getViewName(), is("todo/new"));
+    }
+
+    @Test
+    public void should_use_new_todo_model_when_show_new_todo_page() {
+        TodoController todoController = givenTodoController();
+
+        ModelAndView modelAndView = todoController.create();
+        Todo newTodo = (Todo) modelAndView.getModel().get("todo");
+
+        assertThat(newTodo.getContent(), is(""));
     }
 
     private TodoController givenTodoController(Todo... todos) {
