@@ -26,7 +26,8 @@ public class TodoService {
         return repository.getAll();
     }
 
+    @Transactional
     public void create(Todo todo) {
-        //To change body of created methods use File | Settings | File Templates.
+        repository.create(todo);
     }
 }

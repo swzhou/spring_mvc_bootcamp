@@ -11,6 +11,8 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +32,17 @@ public class TodoServiceFacts {
 
         assertThat(todos.size(), is(1));
         assertThat(todos.get(0), is(expectedTodo));
+    }
+
+    @Test
+    public void should_create_new_todo() {
+        Todo todo = new Todo("todo");
+        TodoRepository repository = mock(TodoRepository.class);
+        TodoService service = new TodoService(repository);
+
+        service.create(todo);
+
+        verify(repository).create(todo);
     }
 
     private TodoService givenTodoService(Todo... todo) {

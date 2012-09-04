@@ -21,4 +21,8 @@ public class TodoRepository {
         return sessionFactory.getCurrentSession()
                 .createQuery("from com.swzhou.mytodo.domain.Todo").list();
     }
+
+    public void create(Todo todo) {
+        //To change body of created methods use File | Settings | File Templates.
+    }
 }
