@@ -15,6 +15,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.isNotNull;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class TodoControllerFacts {
@@ -58,6 +59,17 @@ public class TodoControllerFacts {
         Todo newTodo = (Todo) modelAndView.getModel().get("todo");
 
         assertThat(newTodo.getContent(), is(""));
+    }
+
+    @Test
+    public void should_create_new_todo() {
+        Todo todo = new Todo("todo");
+        TodoService service = mock(TodoService.class);
+        TodoController controller = new TodoController(service);
+
+        controller.create(todo);
+
+        verify(service).create(todo);
     }
 
     private TodoController givenTodoController(Todo... todos) {

@@ -25,4 +25,8 @@ public class TodoService {
     public List<Todo> getAll() {
         return repository.getAll();
     }
+
+    public void create(Todo todo) {
+        //To change body of created methods use File | Settings | File Templates.
+    }
 }
