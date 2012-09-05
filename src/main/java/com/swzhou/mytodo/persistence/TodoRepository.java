@@ -1,6 +1,7 @@
 package com.swzhou.mytodo.persistence;
 
 import com.swzhou.mytodo.domain.Todo;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,7 @@ public class TodoRepository {
     }
 
     public void create(Todo todo) {
-        //To change body of created methods use File | Settings | File Templates.
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(todo);
     }
 }
