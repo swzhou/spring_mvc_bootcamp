@@ -72,6 +72,16 @@ public class TodoControllerFacts {
         verify(service).create(todo);
     }
 
+    @Test
+    public void should_redirect_to_index_after_creating_new_todo() {
+        Todo todo = new Todo("todo");
+        TodoController controller = givenTodoController();
+
+        ModelAndView modelAndView = controller.create(todo);
+
+        assertThat(modelAndView.getViewName(), is("todo/index"));
+    }
+
     private TodoController givenTodoController(Todo... todos) {
         TodoService service = givenTodoService(todos);
         TodoController controller = new TodoController(service);

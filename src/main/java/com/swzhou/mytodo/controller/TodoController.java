@@ -35,7 +35,8 @@ public class TodoController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public void create(@ModelAttribute("todo")Todo todo) {
+    public ModelAndView create(@ModelAttribute("todo")Todo todo) {
         service.create(todo);
+        return index();
     }
 }
