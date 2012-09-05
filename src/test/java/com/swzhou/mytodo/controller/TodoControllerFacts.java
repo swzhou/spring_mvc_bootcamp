@@ -77,9 +77,9 @@ public class TodoControllerFacts {
         Todo todo = new Todo("todo");
         TodoController controller = givenTodoController();
 
-        ModelAndView modelAndView = controller.create(todo);
+        String viewName = controller.create(todo);
 
-        assertThat(modelAndView.getViewName(), is("todo/index"));
+        assertThat(viewName, is("redirect:"));
     }
 
     private TodoController givenTodoController(Todo... todos) {

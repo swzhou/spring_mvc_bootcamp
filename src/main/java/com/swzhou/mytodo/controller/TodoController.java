@@ -35,8 +35,8 @@ public class TodoController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public ModelAndView create(@ModelAttribute("todo")Todo todo) {
+    public String create(@ModelAttribute("todo")Todo todo) {
         service.create(todo);
-        return index();
+        return "redirect:";
     }
 }

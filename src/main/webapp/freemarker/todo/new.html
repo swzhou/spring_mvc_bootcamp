@@ -3,7 +3,7 @@
     <div data-role="header">
         <h1>Add Todo</h1>
     </div>
-    <form name="todo" action="/create" method="post">
+    <form modelAttribute="todo" action="create" method="post">
         <div data-role="fieldcontain" class="ui-hide-label">
             <label for="content">Content:</label>
             <textarea type="text" name="content" id="content" value="" placeholder="Content"></textarea>
