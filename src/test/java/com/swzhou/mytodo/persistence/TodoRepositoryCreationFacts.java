@@ -26,7 +26,7 @@ public class TodoRepositoryCreationFacts {
 
     @Test
     public void should_create_new_todo() {
-        Todo todo = new Todo("todo");
+        Todo todo = new Todo("todo1");
         TodoRepository todoRepository = new TodoRepository(todoRepoSessionFactory);
 
         todoRepository.create(todo);

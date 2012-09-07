@@ -1,6 +1,8 @@
 package com.swzhou.mytodo.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="todos")
@@ -12,6 +14,8 @@ public class Todo {
     private Integer id;
 
     @Column(name="content")
+    @NotNull(message = "content is required")
+    @Size(min = 5, message = "At least 5 characters")
     private String content;
 
     public Todo() {

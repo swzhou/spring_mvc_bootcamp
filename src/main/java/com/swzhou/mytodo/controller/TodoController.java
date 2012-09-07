@@ -4,10 +4,13 @@ import com.swzhou.mytodo.domain.Todo;
 import com.swzhou.mytodo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value="")
@@ -35,7 +38,10 @@ public class TodoController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String create(@ModelAttribute("todo")Todo todo) {
+    public String create(@Valid @ModelAttribute("todo") Todo todo, BindingResult result) {
+        if (result.hasErrors()) {
+            return "todo/new";
+        }
         service.create(todo);
         return "redirect:";
     }
